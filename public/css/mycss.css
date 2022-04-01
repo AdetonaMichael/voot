@@ -1,0 +1,9 @@
+#my-listgroup li.list-group-item{
+    margin-bottom: 9px;
+}
+#my-listgroup a{
+    text-decoration: none;
+}
+#my-listgroup a:hover{
+    background-color: #b9aaaa;
+}
