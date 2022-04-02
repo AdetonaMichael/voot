@@ -1,1 +1,13 @@
 /* your styles go here */
+.or_line{
+    display:grid;
+    align-items: center;
+    color:lightgray;
+    padding:19px;
+    text-align: center;
+    grid-template-columns: minmax(50px, 1fr) auto minmax(50px, 1fr);
+}
+.or_line::before, .or_line::after{
+    content:"";
+    border-top:1px double;
+}

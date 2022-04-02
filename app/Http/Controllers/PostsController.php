@@ -41,14 +41,14 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request)
     {
 
-        $image = $request->image->store('posts', 's3');
-        $image = $request->image->store('posts');
+        $image =  Storage::disk('s3')->url($request->image);
+  
         Post::create([
           'title'=>$request->title,
           'description'=>$request->description,
           'content'=>$request->content,
           'published_at'=>$request->published_at,
-          'image'=> Storage::disk('s3')->url($image),
+          'image'=> $image,
         ]);
 
         session()->flash('success', 'Post Created Successfully...');

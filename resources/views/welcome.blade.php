@@ -25,7 +25,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('img/logo-white.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="{{ asset('img/voot_favicon.png') }}" type="image/x-icon"/>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -52,8 +52,8 @@
         <div class="container">
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
-            <img src="{{ asset('img/logo-white.png') }}" alt="voot logo" width="60" height="60">
-            <!-- Navbar Brand --><a style="color:#670ccd; href="/" class="ml-2 navbar-brand">The Voot Blog</a>
+            <img style="height:50px;" src="{{ asset('img/voot_logo_home.png') }}" alt="voot logo" >
+            {{-- <!-- Navbar Brand --><a style="color:#670ccd; href="/" class="ml-2 navbar-brand">The Voot Blog</a> --}}
             <!-- Toggle Button-->
             <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
           </div>
