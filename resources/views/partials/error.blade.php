@@ -8,7 +8,9 @@
 				<div class="icon-box">
 					<i class="material-icons">&#xE888;</i>
 				</div>
-
+                <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                 </span>
 			</div>
 			<div class="modal-body text-center">
 				<h4>Ooops!</h4>

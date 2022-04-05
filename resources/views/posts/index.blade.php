@@ -13,7 +13,7 @@
             <thead>
                 <th>Image</th>
                 <th>Title</th>
-                <th></th>
+                <th>Category</th>
                 <th></th>
             </thead>
             <tbody>
@@ -21,8 +21,17 @@
                 <tr>
                     <td><img src="storage/{{ $post->image }}" alt="post image" width="50" height="50"></td>
                     <td>{{ $post->title }}</td>
-                    @if(!$post->trashed())
-                    <td><a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-light">Edit</a></td>
+                    <td><a href="{{ route('categories.edit',$post->category->id) }}">{{ $post->category->name }}</a></td>
+                     @if(!$post->trashed())
+                    <td><a style="border:1px solid gray;" href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-light">Edit</a></td>
+
+                    @else
+                    <form action="{{ route('restore-post', $post->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <td><button type="submit" style="border:1px solid gray;" class="btn btn-sm btn-light">Restore</button></td>
+                    </form>
+
                     @endif
                     <td>
                         <form action="{{ route('posts.destroy', $post->id) }}" method="POST">

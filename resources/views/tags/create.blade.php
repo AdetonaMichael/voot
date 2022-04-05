@@ -23,7 +23,7 @@
             </div>
              <br>
              <div class="form-group">
-                 <button  class="btn btn-success" type="submit"> {{ isset($tag)? "Update":"Add"}}<i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                 <button  class="btn btn-success" type="submit"><i class="fas fa-plus    "></i> {{ isset($tag)? "Update":"Add"}}</button>
              </div>
          </form>
     </div>

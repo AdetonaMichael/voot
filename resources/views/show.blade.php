@@ -51,7 +51,7 @@
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
             <img style="height:50px;" src="{{ asset('img/voot_logo_home.png') }}" alt="voot logo" >
-            <!-- Navbar Brand --><a style="color:#670ccd;" href="/" class="ml-2 navbar-brand">The Voot Blog</a>
+            {{-- <!-- Navbar Brand --><a style="color:#670ccd;" href="/" class="ml-2 navbar-brand">The Voot Blog</a> --}}
             <!-- Toggle Button-->
             <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
           </div>

@@ -18,6 +18,15 @@ class Post extends Model
 
      public function deleteImage(){
         Storage::delete($this->image);
-        Storage::disk('s3')->delete($this->image);
+        // Storage::disk('s3')->delete($this->image);
+    }
+    public function category(){
+       return  $this->belongsTo(Category::class);
+    }
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+    public function hasTag($tagid){
+        return in_array($tagid, $this->tags->pluck('id')->toArray());
     }
 }

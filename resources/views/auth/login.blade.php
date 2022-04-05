@@ -9,7 +9,7 @@
 
         <div class="col-md-12 d-flex justify-content-center">
             <div style="width:352px; box-shadow: 0 4px 12px rgb(0 0 0 / 15%); -webkit-box-shadow: 0 4px 12px rgb(0 0 0 / 15%); border-radius:8px;"  class="card pb-5">
-                <div class=" login_header mt-5 text-center"><img src='{{ asset('img/voot_logo.png') }}' alt="voot logo" width="100" height="100"></div>
+                <div class=" login_header mt-5 text-center"><img src='{{ asset('img/voot_logo.png') }}' alt="voot logo" width="80" height="80"></div>
 
                 <div class="card-body mt-5">
                     <form method="POST" action="{{ route('login') }}">

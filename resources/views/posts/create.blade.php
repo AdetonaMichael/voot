@@ -36,15 +36,21 @@
                 <input type="text" name="published_at" class="form-control" value="{{ isset($post)? $post->published_at: "" }}" id="published_at">
             </div>
             @if($tags->count() > 0)
-            {{-- <div class="form-group mt-2">
+            <div class="form-group mt-2">
                 <label for="tags">Tags</label>
                 <select name="tags[]" id="tags" class="form-control tags-selector" multiple>
                     @foreach ( $tags as $tag )
-                    <option value="{{ $tag->id  }}">{{ $tag->name }}</option>
+                    <option value="{{ $tag->id  }}"
+                        @if(isset($post))
+                        @if($post->hasTag($tag->id))
+                         selected
+                         @endif
+                        @endif
+                        >{{ $tag->name }}</option>
                     @endforeach
 
                 </select>
-            </div> --}}
+            </div>
             @endif
             @if(isset($post))
             <div class="form-group mt-2">
@@ -59,7 +65,7 @@
                 <input type="file" class="form-control" name="image" id="image">
             </div>
            @endif
-           {{-- <div class="form-group mt-2">
+           <div class="form-group mt-2">
             <label for="category">Cateogry</label>
             <select name="category" id="category" class="form-control">
             @foreach($categories as $category)
@@ -72,7 +78,7 @@
                     @endif>{{ $category->name }}</option>
             @endforeach
             </select>
-        </div> --}}
+        </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success text-white btn-sm mt-2">{{ isset($post)?'Update Post': 'Add post' }}</button>
             </div>

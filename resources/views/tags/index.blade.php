@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @include('partials.success')
+@include('partials.error')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/successmodal.css') }}">
 <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Roboto|Varela+Round') }}">
@@ -9,7 +10,7 @@
 @section('content')
 
 <div class="d-flex justify-content-end my-2">
-    <a href="{{ route('tags.create') }}" class="btn btn-success">Add tag</a>
+    <a href="{{ route('tags.create') }}" class="btn btn-success"><i class="fa fa-pencil" aria-hidden="true"></i> Add tag</a>
 </div>
 
 <div class="card card-default">
@@ -29,7 +30,7 @@
                 @foreach ($tags as $tag )
                 <tr>
                     <td>{{ $tag->name }}</td>
-                    <td>tag count</td>
+                    <td>{{ $tag->posts->count() }}</td>
                     {{-- <td>{{ $category->post->count(); }}</td> --}}
                     <td><a href="{{ route('tags.edit', $tag->id) }}"
                             class="btn btn-sm btn-info ml-4 bg-light"> Edit</a></td>

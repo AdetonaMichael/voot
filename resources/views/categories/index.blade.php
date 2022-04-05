@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @include('partials.success')
+@include('partials.error')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/successmodal.css') }}">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -19,13 +20,13 @@
         <table class="table table-striped">
             <thead>
                 <th>Name</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Post Count</th>
             </thead>
             <tbody>
                 @foreach ($categories as $category)
                 <tr>
                     <td>{{ $category->name }}</td>
+                    <td>{{ $category->posts->count() }}</td>
                     <td><a class="btn  btn-sm bg-light" href="{{ route('categories.edit', $category->id) }}">Edit</a></td>
                     <td><button class="btn btn-danger btn-sm text-white" onclick="handleDelete({{ $category->id }})"><i class="fa fa-trash-can"></i></button></td>
                 </tr>

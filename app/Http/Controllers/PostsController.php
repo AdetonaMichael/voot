@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verifyCategoriesCount')->only(['create','store']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,15 +45,21 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request)
     {
 
-        $image =  Storage::disk('s3')->url($request->image);
-  
-        Post::create([
-          'title'=>$request->title,
-          'description'=>$request->description,
-          'content'=>$request->content,
-          'published_at'=>$request->published_at,
-          'image'=> $image,
+        // $image = $request->image->store('posts', 's3');
+        $image = $request->image->store('posts');
+        $post = Post::create([
+            'title'=> $request->title,
+            'description'=>$request->description,
+            'content'=>$request->content,
+            'published_at'=>$request->published_at,
+            'image'=> $image,
+            'category_id'=>$request->category,
+            // 'user_id'=>auth()->user()->id,
         ]);
+
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+       }
 
         session()->flash('success', 'Post Created Successfully...');
         return redirect(route('posts.index'));
@@ -73,9 +83,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post, Tag $tag)
+    public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)->with('tags', $tag);
+        return view('posts.create')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -90,10 +100,12 @@ class PostsController extends Controller
         $data = $request->only(['title','description','published_at','content']);
         if($request->hasFile('image')){
             // $image = $request->image->store('posts'); (replace with the one below)
-            $image = Storage::disk('s3')->url($request->image->store('posts', 's3'));
+            $image = $request->image->store('posts');
             $post->deleteImage();
-            dd($image);
             $data['image'] = $image;
+        }
+        if($post->tags){
+            $post->tags()->sync($request->tags);
         }
 
         $post->update($data);
@@ -101,7 +113,6 @@ class PostsController extends Controller
         return redirect(route('posts.index'));
 
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -112,7 +123,7 @@ class PostsController extends Controller
     {
         $post = Post::withTrashed()->where('id', $id)->firstOrFail();
         if($post->trashed()){
-            Storage::delete($post->image);
+            $post->deleteImage();
             $post->forceDelete();
             session()->flash('success', 'The Post has been Deleted');
             return redirect(route('posts.index'));
@@ -121,11 +132,16 @@ class PostsController extends Controller
           session()->flash('success', 'The Post has been trashed Successfull...');
           return redirect(route('trashed-posts.index'));
         }
-
-
     }
     public function trashed(){
-         $trashed = Post::withTrashed()->get();
+         $trashed = Post::onlyTrashed()->get();
          return view('posts.index')->with('posts', $trashed);
+    }
+
+    public function restore($id){
+     $post= Post::withTrashed()->where('id', $id)->firstOrFail();
+     $post->restore();
+     session()->flash('success', 'Post Restored Successfully...');
+     return redirect()->back();
     }
 }
