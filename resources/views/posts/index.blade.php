@@ -6,7 +6,7 @@
 </div>
 
 <div class="card card-default">
-    <div class="card-header">Posts</div>
+    <div class="card-header"><b><i class="fa fa-file-invoice fa-2x"></i>Posts</b></div>
     <div style="overflow-x:auto;" class="card-body">
         @if($posts->count() >0 )
         <table class="table table-striped">

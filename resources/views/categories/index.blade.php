@@ -14,7 +14,7 @@
 </div>
 
 <div class="card card-default">
-    <div class="card-header">Categories</div>
+    <div class="card-header"><i class="fa fa-layer-group fa-2x"></i> Categories</div>
     <div class="card-body">
         @if($categories->count() > 0)
         <table class="table table-striped">

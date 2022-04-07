@@ -14,7 +14,7 @@
 </div>
 
 <div class="card card-default">
-    <div class="card-header">tags</div>
+    <div class="card-header"><i class="fa fa-tags fa-2x"></i> tags</div>
     <div class="card-body">
         @if($tags->count() > 0)
         <table class="table table-striped">

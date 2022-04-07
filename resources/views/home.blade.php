@@ -85,9 +85,11 @@
                             {{ Auth::user()->name }}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @if(auth()->user()->isAdmin() || auth()->user()->isSuperAdmin())
                             <a class="dropdown-item" href="{{ route('posts.index') }}">
                                 My Profile
                            </a>
+                           @endif
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
@@ -122,14 +124,14 @@
                   <div class="post-details">
                     <div class="post-meta d-flex justify-content-between">
                       <div class="date meta-last">{{ $post->published_at }}</div>
-                      <div class="category"><a href="#">Business</a></div>
+                      <div class="category"><a href="#">{{ $post->category->name }}</a></div>
                     </div><a href="post.html">
                       <h3 class="h4">{{ $post->title }}</h3></a>
                     <p class="text-muted">{{ $post->description }}</p>
                     <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                        <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                        <div class="title"><span>John Doe</span></div></a>
-                      <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                        <div class="avatar"><img src="storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+                        <div class="title"><span></span></div></a>
+                      <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
                       <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                     </footer>
                   </div>
@@ -138,7 +140,7 @@
               @endforeach
             </div>
             <!-- Pagination -->
-            <nav aria-label="Page navigation example">
+            {{-- <nav aria-label="Page navigation example">
               <ul class="pagination pagination-template d-flex justify-content-center">
                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                 <li class="page-item"><a href="#" class="page-link active">1</a></li>
@@ -146,7 +148,14 @@
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
               </ul>
-            </nav>
+            </nav> --}}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ $posts->links()}}
+                    </div>
+                </div>
+            </div>
           </div>
         </main>
         <aside class="col-lg-4">
@@ -201,11 +210,9 @@
             <header>
               <h3 class="h6">Categories</h3>
             </header>
-            <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
+            @foreach ($categories as $category )
+            <div class="item d-flex justify-content-between"><a href="#">{{ $category->name }}</a><span>{{ $category->posts->count() }}</span></div>
+            @endforeach
           </div>
           <!-- Widget [Tags Cloud Widget]-->
           <div class="widget tags">
@@ -213,11 +220,10 @@
               <h3 class="h6">Tags</h3>
             </header>
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                @foreach ( $tags as $tag )
+                <li class="list-inline-item"><a href="#" class="tag">#{{ $tag->name }}</a></li>
+
+            @endforeach
             </ul>
           </div>
         </aside>

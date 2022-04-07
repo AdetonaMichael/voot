@@ -16,8 +16,17 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('linkdin')->nullable();
             $table->string('email')->unique();
+            $table->string('stack')->nullable();
+            $table->enum('role', ['admin','writer','superadmin'])->default('writer');
+            $table->longText('about')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -2,7 +2,7 @@
 
 @if(session()->has('error'))
 <div id="myModal" class="modal fade">
-	<div class="modal-dialog .modal-reject">
+	<div class="modal-dialog modal-reject">
 		<div class="modal-content">
 			<div class="modal-header justify-content-center">
 				<div class="icon-box">

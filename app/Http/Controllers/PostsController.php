@@ -54,7 +54,7 @@ class PostsController extends Controller
             'published_at'=>$request->published_at,
             'image'=> $image,
             'category_id'=>$request->category,
-            // 'user_id'=>auth()->user()->id,
+            'user_id'=>auth()->user()->id,
         ]);
 
         if($request->tags){
@@ -74,7 +74,7 @@ class PostsController extends Controller
     public function show($show_id)
     {
         $post = Post::find($show_id);
-        return view('show')->with('post', $post);
+        return view('show')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**

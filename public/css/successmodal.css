@@ -5,7 +5,17 @@ body {
 	color: #434e65;
 	/* width: 525px; */
 }
+.modal-reject {
+	color: #434e65;
+	/* width: 525px; */
+}
 .modal-confirm .modal-content {
+	padding: 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: none;
+}
+.modal-reject .modal-content {
 	padding: 20px;
 	font-size: 16px;
 	border-radius: 5px;
@@ -34,6 +44,11 @@ body {
 	font-size: 36px;
 	margin: 10px 0;
 }
+.modal-reject h4 {
+	text-align: center;
+	font-size: 36px;
+	margin: 10px 0;
+}
 .modal-confirm .form-control, .modal-confirm .btn {
 	min-height: 40px;
 	border-radius: 3px;
@@ -46,10 +61,32 @@ body {
 	text-shadow: none;
 	opacity: 0.5;
 }
+.modal-reject .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	color: #fff;
+	text-shadow: none;
+	opacity: 0.5;
+}
 .modal-confirm .close:hover {
 	opacity: 0.8;
 }
+.modal-reject .close:hover {
+	opacity: 0.8;
+}
 .modal-confirm .icon-box {
+	color: #fff;
+	width: 95px;
+	height: 95px;
+	display: inline-block;
+	border-radius: 50%;
+	z-index: 9;
+	border: 5px solid #fff;
+	padding: 15px;
+	text-align: center;
+}
+.modal-reject .icon-box {
 	color: #fff;
 	width: 95px;
 	height: 95px;
@@ -64,10 +101,28 @@ body {
 	font-size: 64px;
 	margin: -4px 0 0 -4px;
 }
+.modal-reject .icon-box i {
+	font-size: 64px;
+	margin: -4px 0 0 -4px;
+}
 .modal-confirm.modal-dialog {
 	margin-top: 80px;
 }
+.modal-reject.modal-dialog {
+	margin-top: 80px;
+}
 .modal-confirm .btn, .modal-confirm .btn:active {
+	color: #fff;
+	border-radius: 4px;
+	text-decoration: none;
+	transition: all 0.4s;
+	line-height: normal;
+	border-radius: 30px;
+	margin-top: 10px;
+	padding: 6px 20px;
+	border: none;
+}
+.modal-reject .btn, .modal-reject .btn:active {
 	color: #fff;
 	border-radius: 4px;
 	text-decoration: none;

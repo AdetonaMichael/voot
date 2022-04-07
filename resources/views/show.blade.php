@@ -18,6 +18,7 @@
     <!-- Fancybox-->
     <link rel="stylesheet" href="{{ asset('vendor/@fancyapps/fancybox/jquery.fancybox.min.css') }}">
     <!-- theme stylesheet-->
+    <link rel="stylesheet" href="{{ asset('css/show_card.css') }}">
     <script src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" href="{{ asset('css/style.default.css') }}" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
@@ -123,8 +124,8 @@
                 </div>
                 <h1>{{ $post->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
+                    <div class="avatar"><img src="/storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+                    <div class="title"><span>{{ $post->user->name }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">
                     <div class="date"><i class="icon-clock"></i>{{ $post->published_at }}</div>
                     <div class="views"><i class="icon-eye"></i> 500</div>
@@ -145,16 +146,34 @@
                   </blockquote>
                   <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
                 </div>
-                <div class="post-tags"><a href="#" class="tag">#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
-                <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
-                    <div class="icon prev"><i class="fa fa-angle-left"></i></div>
-                    <div class="text"><strong class="text-primary">Previous Post </strong>
-                      <h6>I Bought a Wedding Dress.</h6>
-                    </div></a><a href="#" class="next-post text-right d-flex align-items-center justify-content-end">
-                    <div class="text"><strong class="text-primary">Next Post </strong>
-                      <h6>I Bought a Wedding Dress.</h6>
+                <div class="post-tags">
+                    @foreach ($post->tags as $tag)
+                    <a href="#" class="tag">#{{ $tag->name }}</a>
+                    @endforeach
+
+                </div>
+                <div class="container mt-5">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-7">
+                            <div class="card p-3 py-4">
+                                <div class="text-center"> <img src="/storage/{{ $post->user->image }}" width="100" class="rounded-circle"> </div>
+                                <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">About</span>
+                                    <h5 class="mt-2 mb-0">{{ $post->user->firstname. " ". $post->user->lastname }}</h5> <span>{{ $post->user->stack }}</span>
+                                    <div class="px-4 mt-1">
+                                        <p class="fonts">{{ $post->user->about }} </p>
+                                    </div>
+                                    <ul class="social-list">
+                                        <li><a href="{{ $post->user->facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="{{ $post->user->twitter }}"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="{{ $post->user->linkdin }}"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
+                </div>
+
+
                 <div class="post-comments">
                   <header>
                     <h3 class="h6">Post Comments</h3>
@@ -234,11 +253,10 @@
             <header>
               <h3 class="h6">Categories</h3>
             </header>
-            <div class="item d-flex justify-content-between"><a href="#">Growth</a><span>12</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Sales</a><span>8</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Tips</a><span>17</span></div>
-            <div class="item d-flex justify-content-between"><a href="#">Local</a><span>25</span></div>
+            @foreach ($categories as $category)
+            <div class="item d-flex justify-content-between"><a href="#">{{ $category->name }}</a><span>{{ $category->posts->count() }}</span></div>
+            @endforeach
+
           </div>
           <!-- Widget [Tags Cloud Widget]-->
           <div class="widget tags">
@@ -246,11 +264,9 @@
               <h3 class="h6">Tags</h3>
             </header>
             <ul class="list-inline">
-              <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-              <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
+                @foreach ($tags as $tag)
+                <li class="list-inline-item"><a href="#" class="tag">{{ $tag->name }}</a></li>
+                @endforeach
             </ul>
           </div>
         </aside>
@@ -331,4 +347,5 @@
     <script src="{{ asset('vendor/@fancyapps/fancybox/jquery.fancybox.min.js') }}"></script>
     <script src="{{ asset('js/front.js') }}"></script>
   </body>
+
 </html>

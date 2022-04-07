@@ -88,7 +88,13 @@
                       <ul id="my-listgroup" class="list-group">
                               <a href="{{ route('home') }}"><li class="list-group-item"><i class="fa fa-blog"></i> Blog</li></a>
                               <a href="/"><li class="list-group-item"><i class="fa fa-house-user"></i> Home</li></a>
+                              @if(auth()->user()->isAdmin() )
+
+                              @elseif(auth()->user()->isSuperAdmin())
+                              <a href="{{ route('users.index') }}"><li class="list-group-item"><i class="fa fa-user" aria-hidden="true"></i>Users</li></a>
+                              @endif
                               <a href="{{ route('posts.index') }}"><li class="list-group-item"><i class="fa fa-file-invoice"></i> Posts</li></a>
+                              <a href="{{ route('users.edit-profile') }}"><li class="list-group-item"><i class="fas fa-user-cog"></i>Edit Profile</li></a>
                               <a href="{{ route('categories.index') }}"><li class="list-group-item"><i class="fa fa-layer-group"></i> Categories</li></a>
                               <a href="{{ route('tags.index') }}"><li class="list-group-item"><i class="fa fa-tags"></i> Tags</li></a>
                               <a href="{{ route('trashed-posts.index') }}"><li class="list-group-item"><i class="fa-regular fa-trash-can"></i> Trashed Post</li></a>
