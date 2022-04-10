@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
@@ -109,7 +110,7 @@ class PostsController extends Controller
         }
 
         $post->update($data);
-        session()->flash('success','Post Updated Successfully...');
+        session()->flash('success', 'Post Updated Successfully....');
         return redirect(route('posts.index'));
 
     }
@@ -125,7 +126,7 @@ class PostsController extends Controller
         if($post->trashed()){
             $post->deleteImage();
             $post->forceDelete();
-            session()->flash('success', 'The Post has been Deleted');
+            session()->flash('success', 'The Post has been Deleted Successfully..!');
             return redirect(route('posts.index'));
         }else{
           $post->delete();
@@ -143,5 +144,30 @@ class PostsController extends Controller
      $post->restore();
      session()->flash('success', 'Post Restored Successfully...');
      return redirect()->back();
+    }
+
+    public function category($categoryid){
+        $category = Category::find($categoryid);
+
+        $search = request()->query('search');
+        if($search){
+            $posts = $category->posts()->where('title', 'like','%'.$search.'%')->paginate(4);
+        }else{
+            $posts = $category->posts()->paginate(6);
+        }
+        return view('blog.category')
+        ->with('category', $category)
+        ->with('tags', Tag::all())
+        ->with('categories', Category::all())
+        ->with('posts', $posts);
+    }
+    public function tag($tagid){
+        $tag = Tag::find($tagid);
+        return view('blog.tag')
+        ->with('tags', Tag::all())
+        ->with('categories', Category::all())
+        ->with('tag', $tag)
+        ->with('posts', $tag->posts()
+        ->paginate(6));
     }
 }

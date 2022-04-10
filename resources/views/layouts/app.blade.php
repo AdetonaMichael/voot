@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/mycss.css') }}"rel="stylesheet">
     @yield('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body>
     <div id="app">
@@ -115,4 +115,15 @@
     </div>
 </body>
 @yield('script')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
+<script>
+        @if(Session::has('success'))
+        toastr.success("{{ session()->get('success') }}")
+        @elseif (Session::has('error'))
+        toastr.error("{{ session()->get('success')  }}")
+        @endif
+</script>
 </html>

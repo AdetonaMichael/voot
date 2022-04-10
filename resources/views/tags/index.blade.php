@@ -1,6 +1,4 @@
 @extends('layouts.app')
-@include('partials.success')
-@include('partials.error')
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/successmodal.css') }}">
 <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Roboto|Varela+Round') }}">

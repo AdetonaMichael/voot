@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Category;
 
 class CategoriesController extends Controller
@@ -43,7 +44,8 @@ class CategoriesController extends Controller
              'name'=>$request->name,
          ]);
 
-         session()->flash('success', 'Categories Added Successfully...');
+        //  session()->flash('success', 'Categories Added Successfully...');
+         Session::flash('success', 'You Successfully Created a Category');
          return redirect(route('categories.index'));
     }
 
@@ -80,7 +82,7 @@ class CategoriesController extends Controller
     {
         $category->name = $request->name;
         $category->save();
-        session()->flash('success','Category Updated Successfully...!');
+        Session::flash('success', 'You successfully... Updated the Category!');
         return redirect(route('categories.index'));
     }
 
@@ -93,11 +95,11 @@ class CategoriesController extends Controller
     public function destroy(Category $category)
     {
         if($category->posts->count() > 0){
-            session()->flash('error', 'Category Can not be deleted cause it has some post');
+            Session::flash('error', 'This Category Can Not be Deleted Cause its associated with some post');
             return redirect()->back();
         }
         $category->delete();
-        session()->flash('success', 'Category Deleted Successfully...');
+        Session::flash('success', 'Category Deleted Successfully...');
         return redirect(route('categories.index'));
     }
 }

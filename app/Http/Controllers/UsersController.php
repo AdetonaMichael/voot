@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UpdateProfileRequest;
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 class UsersController extends Controller
 {
     public function index(){
@@ -14,27 +15,30 @@ class UsersController extends Controller
     public function makeadmin(User $user){
         $user->role ='admin';
         $user->save();
-        session()->flash('success', 'The User is Now an Admin');
+        Session::flash('success', 'Successfully... Changed Users Permission');
+        return redirect(route('users.index'));
+    }
+    public function removeadmin(User $user){
+        $user->role = 'writer';
+        $user->save();
+        Session::flash('success', 'Successfully... Changed Users Permission');
+        // session()->flash('success', 'Successfully... Changed Users Permission');
         return redirect(route('users.index'));
     }
     public function edit(){
         return view('users.edit')->with('user', auth()->user());
     }
     public function update(UpdateProfileRequest $request){
+        $data = $request->only(['name','about','firstname','lastname','twitter','facebook','linkdin','stack']);
         $user = auth()->user();
-        $user->update([
-            'name'=> $request->name,
-            'about'=>$request->about,
-            'firstname'=>$request->firstname,
-            'lastname'=>$request->lastname,
-            'twitter'=>$request->twitter,
-            'facebook'=>$request->facebook,
-            'linkdin'=>$request->linkdin,
-            'stack'=>$request->stack,
-            'image'=>$request->image->store('profpix'),
-        ]);
+        if($request->hasFile('image')){
+            $image = $request->image->store('profpix');
+            Storage::delete($user->image);
+            $data['image'] = $image;
+        }
+        $user->update($data);
 
-        session()->flash('success', 'User Updated Successfully...');
+        Session::flash('success', 'Profile Updated Successfully...!!');
         return redirect(route('users.edit-profile'));
 
     }

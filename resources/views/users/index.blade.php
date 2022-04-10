@@ -1,8 +1,5 @@
 @extends('layouts.app')
-@include('partials.success')
 @section('content')
-
-
 <div class="card card-default">
     <div class="card-header"><b><i class="fas fa-user-cog fa-2x"></i> Users</b></div>
     <div style="overflow-x:auto;" class="card-body">
@@ -11,22 +8,30 @@
             <thead>
                 <th>Image</th>
                 <th>Name</th>
+                <th>Posts Count</th>
                 <th>Email</th>
-                <th></th>
+                <th>Power</th>
             </thead>
             <tbody>
                 @foreach ($users as $user )
                 <tr>
                     <td> <div class="avatar"><img style="border-radius:45px" src="/storage/{{ $user->image }}" alt="..." height="60" width="60" class="img-fluid"></div></td>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->posts->count() }}</td>
                     <td>{{ $user->email }}</td>
                     <td>
-                        @if($user->isAdmin() || $user->isSuperAdmin())
+                        @if($user->isAdmin())
+                        <form action="{{ route('users.remove-admin', $user->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-sm btn-secondary">Remove</button>
 
+                        </form>
+                        @elseif ($user->isSuperAdmin())
+                        <span class="text-danger"><b>Boss</b></span>
                         @else
                         <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-sm btn-secondary">Admin</button>
+                            <button type="submit" class="btn btn-sm btn-secondary">Make</button>
 
                         </form>
                         @endif

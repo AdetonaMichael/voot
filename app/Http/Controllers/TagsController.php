@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\tags\CreateTagRequest;
 use App\Http\Requests\tags\UpdateTagRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Models\Tag;
 
 class TagsController extends Controller
@@ -93,7 +94,7 @@ class TagsController extends Controller
     public function destroy(Tag $tag)
     {
         if($tag->posts->count() > 0){
-            session()->flash('error', 'Post Can not be deleted cause it has some post');
+            session()->flash('error', 'Tag Can not be deleted cause it has some post');
              return redirect()->back();
         }
         $tag->delete();

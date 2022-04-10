@@ -39,7 +39,7 @@
             <div class="close-btn"><i class="icon-close"></i></div>
             <div class="row d-flex justify-content-center">
               <div class="col-md-8">
-                <form action="#">
+                <form action="{{ route('home') }}" method="GET" >
                   <div class="form-group">
                     <input type="search" name="search" id="search" placeholder="What are you looking for?">
                     <button type="submit" class="submit"><i class="icon-search-1"></i></button>
@@ -116,28 +116,31 @@
         <main class="posts-listing col-lg-8">
           <div class="container">
             <div class="row">
-              @foreach ($posts as $post )
+              @forelse ($posts as $post )
+   <!-- post -->
+   <div class="post col-xl-6">
+    <div class="post-thumbnail"><a href="{{ route('posts.show', $post->id) }}"><img src="storage/{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
+    <div class="post-details">
+      <div class="post-meta d-flex justify-content-between">
+        <div class="date meta-last">{{ $post->published_at }}</div>
+        <div class="category"><a href="#">{{ $post->category->name }}</a></div>
+      </div><a href="post.html">
+        <h3 class="h4">{{ $post->title }}</h3></a>
+      <p class="text-muted">{{ $post->description }}</p>
+      <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
+          <div class="avatar"><img src="storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+          <div class="title"><span></span></div></a>
+        <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
+        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+      </footer>
+    </div>
+  </div>
+              @empty
+               <p class="text-center">
+                   No results found for query <strong>{{ request()->query('search') }}</strong>
+               </p>
 
-                <!-- post -->
-                <div class="post col-xl-6">
-                  <div class="post-thumbnail"><a href="{{ route('posts.show', $post->id) }}"><img src="storage/{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
-                  <div class="post-details">
-                    <div class="post-meta d-flex justify-content-between">
-                      <div class="date meta-last">{{ $post->published_at }}</div>
-                      <div class="category"><a href="#">{{ $post->category->name }}</a></div>
-                    </div><a href="post.html">
-                      <h3 class="h4">{{ $post->title }}</h3></a>
-                    <p class="text-muted">{{ $post->description }}</p>
-                    <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                        <div class="avatar"><img src="storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
-                        <div class="title"><span></span></div></a>
-                      <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
-                      <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                    </footer>
-                  </div>
-                </div>
-
-              @endforeach
+              @endforelse
             </div>
             <!-- Pagination -->
             {{-- <nav aria-label="Page navigation example">
@@ -152,7 +155,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        {{ $posts->links()}}
+                        {{ $posts->appends(['search'=>request()->query('search')])->links()}}
                     </div>
                 </div>
             </div>
@@ -164,9 +167,9 @@
             <header>
               <h3 class="h6">Search the Voot Blog</h3>
             </header>
-            <form action="#" class="search-form">
+            <form action="{{ route('home') }}" class="search-form" method="GET">
               <div class="form-group">
-                <input type="search" placeholder="What are you looking for?">
+                <input type="text" name="search" placeholder="What are you looking for?" value="{{ request()->query('search') }}">
                 <button type="submit" class="submit"><i class="icon-search"></i></button>
               </div>
             </form>
@@ -211,7 +214,7 @@
               <h3 class="h6">Categories</h3>
             </header>
             @foreach ($categories as $category )
-            <div class="item d-flex justify-content-between"><a href="#">{{ $category->name }}</a><span>{{ $category->posts->count() }}</span></div>
+            <div class="item d-flex justify-content-between"><a href="{{ route('blog.category',$category->id) }}">{{ $category->name }}</a><span>{{ $category->posts->count() }}</span></div>
             @endforeach
           </div>
           <!-- Widget [Tags Cloud Widget]-->
@@ -221,7 +224,7 @@
             </header>
             <ul class="list-inline">
                 @foreach ( $tags as $tag )
-                <li class="list-inline-item"><a href="#" class="tag">#{{ $tag->name }}</a></li>
+                <li class="list-inline-item"><a href="{{ route('blog.tag', $tag->id)}}" class="tag">#{{ $tag->name }}</a></li>
 
             @endforeach
             </ul>
