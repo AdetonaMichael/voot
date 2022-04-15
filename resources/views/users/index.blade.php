@@ -15,7 +15,7 @@
             <tbody>
                 @foreach ($users as $user )
                 <tr>
-                    <td> <div class="avatar"><img style="border-radius:45px" src="/storage/{{ $user->image }}" alt="..." height="60" width="60" class="img-fluid"></div></td>
+                    <td> <div class="avatar"><img style="border-radius:45px" src="{{ $user->image }}" alt="..." height="60" width="60" class="img-fluid"></div></td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->posts->count() }}</td>
                     <td>{{ $user->email }}</td>

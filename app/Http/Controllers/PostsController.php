@@ -45,15 +45,14 @@ class PostsController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $image = $request->image->store('posts', 's3');
 
-        // $image = $request->image->store('posts', 's3');
-        $image = $request->image->store('posts');
         $post = Post::create([
             'title'=> $request->title,
             'description'=>$request->description,
             'content'=>$request->content,
             'published_at'=>$request->published_at,
-            'image'=> $image,
+            'image'=>Storage::disk('s3')->url($image),
             'category_id'=>$request->category,
             'user_id'=>auth()->user()->id,
         ]);
@@ -100,8 +99,8 @@ class PostsController extends Controller
     {
         $data = $request->only(['title','description','published_at','content']);
         if($request->hasFile('image')){
-            // $image = $request->image->store('posts'); (replace with the one below)
-            $image = $request->image->store('posts');
+            $image = Storage::disk('s3')->url($request->image->store('posts', 's3'));
+            // $image = $request->image->store('posts');
             $post->deleteImage();
             $data['image'] = $image;
         }

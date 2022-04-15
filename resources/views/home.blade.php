@@ -119,7 +119,7 @@
               @forelse ($posts as $post )
    <!-- post -->
    <div class="post col-xl-6">
-    <div class="post-thumbnail"><a href="{{ route('posts.show', $post->id) }}"><img src="storage/{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
+    <div class="post-thumbnail"><a href="{{ route('posts.show', $post->id) }}"><img src="{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
     <div class="post-details">
       <div class="post-meta d-flex justify-content-between">
         <div class="date meta-last">{{ $post->published_at }}</div>
@@ -128,7 +128,7 @@
         <h3 class="h4">{{ $post->title }}</h3></a>
       <p class="text-muted">{{ $post->description }}</p>
       <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-          <div class="avatar"><img src="storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+          <div class="avatar"><img src="{{ $post->user->image }}" alt="..." class="img-fluid"></div>
           <div class="title"><span></span></div></a>
         <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
         <div class="comments meta-last"><i class="icon-comment"></i>12</div>

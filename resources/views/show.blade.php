@@ -117,14 +117,14 @@
         <main class="post blog-post col-lg-8">
           <div class="container">
             <div class="post-single">
-              <div class="post-thumbnail"><img src="/storage/{{ $post->image }}" alt="..." class="img-fluid"></div>
+              <div class="post-thumbnail"><img src="{{ $post->image }}" alt="..." class="img-fluid"></div>
               <div class="post-details">
                 <div class="post-meta d-flex justify-content-between">
                   <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                 </div>
                 <h1>{{ $post->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="/storage/{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+                    <div class="avatar"><img src="{{ $post->user->image }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{ $post->user->name }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">
                     <div class="date"><i class="icon-clock"></i>{{ $post->published_at }}</div>
@@ -145,7 +145,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-md-7">
                             <div class="card p-3 py-4">
-                                <div class="text-center"> <img src="/storage/{{ $post->user->image }}" width="100" class="rounded-circle"> </div>
+                                <div class="text-center"> <img src="{{ $post->user->image }}" width="100" class="rounded-circle"> </div>
                                 <div class="text-center mt-3"> <span class="bg-secondary p-1 px-4 rounded text-white">About</span>
                                     <h5 class="mt-2 mb-0">{{ $post->user->firstname. " ". $post->user->lastname }}</h5> <span>{{ $post->user->stack }}</span>
                                     <div class="px-4 mt-1">

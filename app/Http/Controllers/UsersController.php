@@ -32,9 +32,8 @@ class UsersController extends Controller
         $data = $request->only(['name','about','firstname','lastname','twitter','facebook','linkdin','stack']);
         $user = auth()->user();
         if($request->hasFile('image')){
-            $image = $request->image->store('profpix');
-            Storage::delete($user->image);
-            $data['image'] = $image;
+            $image = $request->image->store('profpix', 's3');
+            $data['image'] = Storage::disk('s3')->url($image);
         }
         $user->update($data);
 

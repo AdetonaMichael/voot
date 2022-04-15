@@ -19,7 +19,7 @@
             <tbody>
                 @foreach ($posts as $post )
                 <tr>
-                    <td><img src="storage/{{ $post->image }}" alt="post image" width="50" height="50"></td>
+                    <td><img src="{{ $post->image }}" alt="post image" width="50" height="50"></td>
                     <td>{{ $post->title }}</td>
                     <td><a href="{{ route('categories.edit',$post->category->id) }}">{{ $post->category->name }}</a></td>
                      @if(!$post->trashed())
