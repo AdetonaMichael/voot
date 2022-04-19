@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div style="height: 100vh;" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="logo d-flex justify-content-center">
+                <img src="{{ asset('img/voot_logo_home.png') }}" alt="">
+            </div>
+            <div style="top: 10vh;"  class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
@@ -32,8 +35,8 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 offset-md-4 justify-content-center d-flex">
+                                <button style="background-color:#a89714; border-radius:45px;" type="submit" class="btn btn-primary">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

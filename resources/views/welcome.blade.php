@@ -34,7 +34,7 @@
     <header class="header">
       <!-- Main Navbar-->
       <nav class="navbar navbar-expand-lg">
-        <div class="search-area">
+        {{-- <div class="search-area">
           <div class="search-area-inner d-flex align-items-center justify-content-center">
             <div class="close-btn"><i class="icon-close"></i></div>
             <div class="row d-flex justify-content-center">
@@ -48,7 +48,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <div class="container">
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
@@ -101,7 +101,7 @@
                     </li>
                 @endguest
             </ul>
-            <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+            <div class="navbar-text"><a href="#" class="search-btn"><i class="fa fa-spinner" aria-hidden="true"></i></a></div>
           </div>
         </div>
       </nav>
@@ -121,8 +121,8 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-            <h2 class="h3">Some great intro here</h2>
-            <p class="text-big">Place a nice <strong>introduction</strong> here <strong>to catch reader's attention</strong>. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderi.</p>
+            <h2 class="h3">Welcome To VOOT</h2>
+            <p class="text-big">WE are excited to bring to you amazing contents on Education, politics, poems, Culture, Entertainment. Voot Blog is here to serve you update around the world, interesting write ups, mouth watering food recipes that would blow your mind, some many ohter wonderful packages. So, sit back, relax as we serve you right, We hope to see you soon.</p>
           </div>
         </div>
       </div>
@@ -135,16 +135,11 @@
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                  <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
+                  <div class="category"><a href="#">Technology</a></div><a href="post.html">
                     <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
                 </header>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
-                  <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                  <div class="comments"><i class="icon-comment"></i>12</div>
-                </footer>
+
               </div>
             </div>
           </div>
@@ -157,16 +152,11 @@
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                  <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
+                  <div class="category"><a href="#">Business</a></div><a href="post.html">
                     <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
                 </header>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
-                  <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                  <div class="comments"><i class="icon-comment"></i>12</div>
-                </footer>
+
               </div>
             </div>
           </div>
@@ -177,16 +167,11 @@
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                  <div class="category"><a href="#">Business</a><a href="#">Technology</a></div><a href="post.html">
+                  <div class="category"><a href="#">Academics & MORE...</a></div><a href="post.html">
                     <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
                 </header>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
-                <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                    <div class="title"><span>John Doe</span></div></a>
-                  <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                  <div class="comments"><i class="icon-comment"></i>12</div>
-                </footer>
+
               </div>
             </div>
           </div>

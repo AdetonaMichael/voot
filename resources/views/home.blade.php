@@ -34,7 +34,7 @@
     <header class="header">
       <!-- Main Navbar-->
       <nav class="navbar navbar-expand-lg">
-        <div class="search-area">
+        {{-- <div class="search-area">
           <div class="search-area-inner d-flex align-items-center justify-content-center">
             <div class="close-btn"><i class="icon-close"></i></div>
             <div class="row d-flex justify-content-center">
@@ -48,7 +48,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> --}}
         <div class="container">
           <!-- Navbar Brand -->
           <div class="navbar-header d-flex align-items-center justify-content-between">
@@ -104,7 +104,7 @@
                     </li>
                 @endguest
             </ul>
-            <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
+            <div class="navbar-text"><a href="#" class="search-btn"><i class="fa fa-spinner" aria-hidden="true"></i></a></div>
 
           </div>
         </div>
@@ -131,7 +131,7 @@
           <div class="avatar"><img src="{{ $post->user->image }}" alt="..." class="img-fluid"></div>
           <div class="title"><span></span></div></a>
         <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
-        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+        <div class="comments meta-last"><a href="{{ route('posts.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
       </footer>
     </div>
   </div>
@@ -176,37 +176,10 @@
           </div>
           <!-- Widget [Latest Posts Widget]        -->
           <div class="widget latest-posts">
-            <header>
-              <h3 class="h6">Latest Posts</h3>
-            </header>
+
             <div class="blog-posts"><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a><a href="#">
-                <div class="item d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                    <div class="d-flex align-items-center">
-                      <div class="views"><i class="icon-eye"></i> 500</div>
-                      <div class="comments"><i class="icon-comment"></i>12</div>
-                    </div>
-                  </div>
-                </div></a></div>
+                <a href="https://www.whogohost.com/host/aff.php?aff=4244&page=hosting" target="_blank">
+                    <img src="https://www.whogohost.com/images/affiliates/sh-300-x-600a.png" /></a></div>
           </div>
           <!-- Widget [Categories Widget]-->
           <div class="widget categories">
@@ -265,24 +238,12 @@
                 <li> <a href="#">Our Partners</a></li>
                 <li> <a href="#">FAQ</a></li>
                 <li> <a href="#">How It Works</a></li>
-                <li> <a href="#">Contact</a></li>
               </ul>
             </div>
           </div>
           <div class="col-md-4">
             <div class="latest-posts"><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a></div>
+                <a href="https://www.whogohost.com/host/aff.php?aff=4244&page=hosting" target="_blank"><img src="https://www.whogohost.com/images/affiliates/unlimited-hosting-336-x-280.png" /></a>
           </div>
         </div>
       </div>
@@ -298,6 +259,7 @@
           </div>
         </div>
       </div>
+      <script id="dsq-count-scr" src="//voot.disqus.com/count.js" async></script>
     </footer>
     <!-- JavaScript files-->
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
