@@ -15,7 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="icon" href="{{ asset('img/voot_favicon.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="https://voot.thegeonerds.com/img/voot_favicon.ico" type="image/x-icon"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -114,11 +114,12 @@
         </main>
     </div>
 </body>
-@yield('script')
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/toastr.min.js') }}"></script>
+@yield('script')
 <script>
         @if(Session::has('success'))
         toastr.success("{{ session()->get('success') }}")

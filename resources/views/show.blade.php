@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Voot | Post</title>
-    <meta name="description" content="">
+    <title>Voot | {{ $post->title }}</title>
+    <meta name="description" content="{{ $post->description }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -24,10 +24,19 @@
     <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('img/voot_favicon.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="https://voot.thegeonerds.com/img/voot_favicon.ico" type="image/x-icon"/>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MVL2LTBNEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MVL2LTBNEM');
+</script>
   </head>
   <body>
     <header class="header">
@@ -128,7 +137,7 @@
                     <div class="title"><span>{{ $post->user->name }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">
                     <div class="date"><i class="icon-clock"></i>{{ $post->published_at }}</div>
-                    <div class="views"><i class="icon-eye"></i> 500</div>
+                    {{-- <div class="views"><i class="icon-eye"></i> 500</div> --}}
                     <div class="comments meta-last"><a href="{{ route('posts.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
 
                   </div>
@@ -281,11 +290,8 @@
       <div class="copyrights">
         <div class="container">
           <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2022. All rights reserved. The Voot Blog</p>
-            </div>
-            <div class="col-md-6 text-right">
-
+            <div class="col-md-12 d-flex justify-content-center">
+              <p class="text-center">&copy; 2022. All rights reserved. The Voot Blog</p>
             </div>
           </div>
         </div>

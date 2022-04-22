@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>VOOT | HOME</title>
-    <meta name="description" content="">
+    <meta name="description" content="WE are excited to bring to you amazing contents on Education, politics, poems, Culture, Entertainment. Voot Blog is here to serve you update around the world, interesting write ups, mouth watering food recipes that would blow your mind, some many ohter wonderful packages. So, sit back, relax as we serve you right, We hope to see you soon.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -25,7 +25,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('img/voot_favicon.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="https://voot.thegeonerds.com/img/voot_favicon.ico" type="image/x-icon"/>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -119,19 +119,19 @@
               @forelse ($posts as $post )
    <!-- post -->
    <div class="post col-xl-6">
-    <div class="post-thumbnail"><a href="{{ route('posts.show', $post->id) }}"><img src="{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
+    <div class="post-thumbnail"><a href="{{ route('blog.show', $post->id) }}"><img src="{{ $post->image }}" alt="post image" class="img-fluid"></a></div>
     <div class="post-details">
       <div class="post-meta d-flex justify-content-between">
         <div class="date meta-last">{{ $post->published_at }}</div>
         <div class="category"><a href="#">{{ $post->category->name }}</a></div>
-      </div><a href="post.html">
+      </div><a href="{{ route('posts.show', $post->id) }}">
         <h3 class="h4">{{ $post->title }}</h3></a>
       <p class="text-muted">{{ $post->description }}</p>
       <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
           <div class="avatar"><img src="{{ $post->user->image }}" alt="..." class="img-fluid"></div>
           <div class="title"><span></span></div></a>
         <div class="date"><i class="icon-clock"></i>{{ $post->user->created_at }}</div>
-        <div class="comments meta-last"><a href="{{ route('posts.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
+        <div class="comments meta-last"><a href="{{ route('blog.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
       </footer>
     </div>
   </div>
@@ -249,14 +249,11 @@
       </div>
       <div class="copyrights">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2022. All rights reserved. The Voot Blog.</p>
-            </div>
-            <div class="col-md-6 text-right">
-
-            </div>
-          </div>
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                  <p class="text-center">&copy; 2022. All rights reserved. The Voot Blog</p>
+                </div>
+              </div>
         </div>
       </div>
       <script id="dsq-count-scr" src="//voot.disqus.com/count.js" async></script>

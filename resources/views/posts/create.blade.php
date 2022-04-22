@@ -55,7 +55,7 @@
             @if(isset($post))
             <div class="form-group mt-2">
                 <label for="image">Image</label>
-                <img src="/storage/{{ $post->image }}" style="width:100%;" alt="Post Image"/>
+                <img src="{{ $post->image }}" style="width:100%;" alt="Post Image"/>
                 <input type="file" class="form-control" name="image" id="image">
             </div>
             @else

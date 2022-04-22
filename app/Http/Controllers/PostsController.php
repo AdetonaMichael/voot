@@ -24,7 +24,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::all());
+        return view('posts.index')->with('posts', Post::orderBy('published_at','DESC')->paginate(6));
     }
 
     /**
@@ -71,11 +71,11 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($show_id)
-    {
-        $post = Post::find($show_id);
-        return view('show')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
-    }
+    // public function show($show_id)
+    // {
+    //     $post = Post::find($show_id);
+    //     return view('show')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -47,13 +47,13 @@
                                 <div class="col-md-12"><label class="labels">About Me</label><textarea name="about" class="form-control" id="about" cols="30" rows="10">{{ $user->about }}</textarea>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Twitter</label><input type="text" class="form-control" name="twitter" placeholder="Twitter Url" value="{{ $user->twitter }}"></div>
+                                <div class="col-md-12"><label class="labels">Twitter</label><input type="text" class="form-control" name="twitter" placeholder="https://twitter.com/Robert_John" value="{{ $user->twitter }}"></div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">FaceBook</label><input type="text" class="form-control" name="facebook" placeholder="Facebook Url" value="{{ $user->facebook }}"></div>
+                                <div class="col-md-12"><label class="labels">FaceBook</label><input type="text" class="form-control" name="facebook" placeholder="https://www.facebook.com/samuel" value="{{ $user->facebook }}"></div>
                             </div>
                             <div class="row mt-2">
-                                <div class="col-md-12"><label class="labels">Linkdin</label><input type="text" class="form-control" name="linkdin" placeholder="Linkdin Url" value="{{ $user->linkdin }}"></div>
+                                <div class="col-md-12"><label class="labels">Linkdin</label><input type="text" class="form-control" name="linkdin" placeholder="https://www.linkedin.com/in/joy" value="{{ $user->linkdin }}"></div>
                             </div>
                             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Update Profile</button></div>
                         </div>

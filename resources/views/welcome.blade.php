@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>VOOT | HOME</title>
-    <meta name="description" content="">
+    <title>Voot | Welcome</title>
+    <meta name="description" content="WE are excited to bring to you amazing contents on Education, politics, poems, Culture, Entertainment. Voot Blog is here to serve you update around the world, interesting write ups, mouth watering food recipes that would blow your mind, some many ohter wonderful packages. So, sit back, relax as we serve you right, We hope to see you soon.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
@@ -25,7 +25,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('img/voot_favicon.png') }}" type="image/x-icon"/>
+    <link rel="icon" href="https://voot.thegeonerds.com/img/voot_favicon.ico" type="image/x-icon"/>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -136,26 +136,26 @@
               <div class="content">
                 <header class="post-header">
                   <div class="category"><a href="#">Technology</a></div><a href="post.html">
-                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
+                    <h2 class="h4">Bringing you The latest and Very Best in Tech</h2></a>
                 </header>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Today, it is impossible to discuss media and the ways societies communicate without addressing the fast-moving pace of technology change.</p>
 
               </div>
             </div>
           </div>
-          <div class="image col-lg-5"><img src="img/featured-pic-1.jpeg" alt="..."></div>
+          <div class="image col-lg-5"><img src="https://cdn.pixabay.com/photo/2016/06/03/13/57/digital-marketing-1433427_960_720.jpg" alt="..."></div>
         </div>
         <!-- Post        -->
         <div class="row d-flex align-items-stretch">
-          <div class="image col-lg-5"><img src="img/featured-pic-2.jpeg" alt="..."></div>
+          <div class="image col-lg-5"><img src="https://cdn.pixabay.com/photo/2017/12/05/09/11/questions-2998901_960_720.jpg" alt="..."></div>
           <div class="text col-lg-7">
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                  <div class="category"><a href="#">Business</a></div><a href="post.html">
-                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
+                  <div class="category"><a href="#">Your How To Blog!</a></div><a href="post.html">
+                    <h2 class="h4">We have got you covered with Solutions to most of your how to questions.</h2></a>
                 </header>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <p>Learn how to do anything with The Voot Blog, Your must go how-to website. Easy, well-researched, and trustworthy instructions for everything you want do ...</p>
 
               </div>
             </div>
@@ -168,23 +168,23 @@
               <div class="content">
                 <header class="post-header">
                   <div class="category"><a href="#">Academics & MORE...</a></div><a href="post.html">
-                    <h2 class="h4">Alberto Savoia Can Teach You About Interior</h2></a>
+                    <h2 class="h4">Provides global higher education coverage, news, opinions, features and book reviews.</h2></a>
                 </header>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrude consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <p>You Don't Need to go far Cause we are here to hit you with the latest updates around you.</p>
 
               </div>
             </div>
           </div>
-          <div class="image col-lg-5"><img src="img/featured-pic-3.jpeg" alt="..."></div>
+          <div class="image col-lg-5"><img src="https://cdn.pixabay.com/photo/2016/05/18/11/25/library-1400313_960_720.jpg" alt="..."></div>
         </div>
       </div>
     </section>
     <!-- Divider Section-->
-    <section style="background: url(img/divider-bg.jpg); background-size: cover; background-position: center bottom" class="divider">
+    <section style="background: url(https://cdn.pixabay.com/photo/2016/11/18/15/31/cooking-1835370_960_720.jpg); background-size: cover; background-position: center bottom" class="divider">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2><a href="#" class="hero-link">View More</a>
+            <h2>Stay updated, stay informed with our latest and upcoming Blog Posts</h2><a href="{{ route('home') }}" class="hero-link">View More</a>
           </div>
         </div>
       </div>
@@ -193,43 +193,24 @@
     <section class="latest-posts">
       <div class="container">
         <header>
-          <h2>Latest from the blog</h2>
-          <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <h2>Sample Blog Posts</h2>
         </header>
         <div class="row">
+          @foreach ($posts as $post)
           <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
+            <div class="post-thumbnail"><a href="post.html"><img src="{{ $post->image }}" alt="..." class="img-fluid"></a></div>
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
-                <div class="date">20 May | 2016</div>
-                <div class="category"><a href="#">Business</a></div>
+                <div class="date">{{ $post->published_at }}</div>
+                <div class="category"><a href="#">{{ $post->category->name }}</a></div>
               </div><a href="post.html">
-                <h3 class="h4">Ways to remember your important ideas</h3></a>
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                <h3 class="h4">{{ $post->title }}</h3></a>
+              <p class="text-muted">{{ $post->description }}</p>
             </div>
           </div>
-          <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="img/blog-2.jpg" alt="..." class="img-fluid"></a></div>
-            <div class="post-details">
-              <div class="post-meta d-flex justify-content-between">
-                <div class="date">20 May | 2016</div>
-                <div class="category"><a href="#">Technology</a></div>
-              </div><a href="post.html">
-                <h3 class="h4">Diversity in Engineering: Effect on Questions</h3></a>
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-            </div>
-          </div>
-          <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="img/blog-3.jpg" alt="..." class="img-fluid"></a></div>
-            <div class="post-details">
-              <div class="post-meta d-flex justify-content-between">
-                <div class="date">20 May | 2016</div>
-                <div class="category"><a href="#">Financial</a></div>
-              </div><a href="post.html">
-                <h3 class="h4">Alberto Savoia Can Teach You About Interior</h3></a>
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-            </div>
-          </div>
+
+          @endforeach
+
         </div>
       </div>
     </section>
@@ -255,7 +236,7 @@
       </div>
     </section> --}}
     <!-- Gallery Section-->
-    <section class="gallery no-padding">
+    {{-- <section class="gallery no-padding">
       <div class="row">
         <div class="mix col-lg-3 col-md-3 col-sm-6">
           <div class="item"><a href="img/gallery-1.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-1.jpg" alt="..." class="img-fluid">
@@ -273,8 +254,12 @@
           <div class="item"><a href="img/gallery-4.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-4.jpg" alt="..." class="img-fluid">
               <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
         </div>
+        <div class="mix col-lg-3 col-md-3 col-sm-6">
+          <div class="item"><a href="img/gallery-4.jpg" data-fancybox="gallery" class="image"><img src="img/gallery-4.jpg" alt="..." class="img-fluid">
+              <div class="overlay d-flex align-items-center justify-content-center"><i class="icon-search"></i></div></a></div>
+        </div>
       </div>
-    </section>
+    </section> --}}
     <!-- Page Footer-->
     <footer class="main-footer">
       <div class="container">
@@ -314,31 +299,18 @@
           </div>
           <div class="col-md-4">
             <div class="latest-posts"><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Hotels for all budgets</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Great street atrs in London</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a><a href="#">
-                <div class="post d-flex align-items-center">
-                  <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                  <div class="title"><strong>Best coffee shops in Sydney</strong><span class="date last-meta">October 26, 2016</span></div>
-                </div></a></div>
+                <a href="https://www.whogohost.com/host/aff.php?aff=4244&page=hosting" target="_blank"><img src="https://www.whogohost.com/images/affiliates/unlimited-hosting-336-x-280.png" /></a>
+          </div>
           </div>
         </div>
       </div>
       <div class="copyrights">
         <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>&copy; 2022. All rights reserved. The Voot Blog</p>
-            </div>
-            <div class="col-md-6 text-right">
-
-            </div>
-          </div>
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-center">
+                  <p class="text-center">&copy; 2022. All rights reserved. The Voot Blog</p>
+                </div>
+              </div>
         </div>
       </div>
     </footer>

@@ -36,5 +36,15 @@ class HomeController extends Controller
         }
         return view('home')->with('posts',$posts)->with('categories', Category::all())->with('tags', Tag::all());
     }
+     public function welcome(){
+        $posts = Post::inRandomOrder()->limit(3)->get();;
+
+        return view('welcome', compact('posts'));
+    }
+    public function show($show_id)
+    {
+        $post = Post::find($show_id);
+        return view('show')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
+    }
 
 }

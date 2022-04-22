@@ -19,16 +19,19 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('blog/category/{categoryid}', [PostsController::class, 'category'])->name('blog.category');
 Route::get('blog/tag/{tagid}', [PostsController::class, 'tag'])->name('blog.tag');
-// Route::get('blogpost', [HomeController::class, 'blogpost']);
+Route::get('blog/show/{showid}',[HomeController::class, 'show'])->name('blog.show');
+
 
 
 Route::middleware(['auth'])->group(function () {
