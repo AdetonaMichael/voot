@@ -54,7 +54,7 @@
     <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Delete Tag</h5>
                   <span type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <i class="fa fa-times fa-2x" aria-hidden="true"></i>
                  </span>

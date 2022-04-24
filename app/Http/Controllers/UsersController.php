@@ -36,7 +36,7 @@ class UsersController extends Controller
             $data['image'] = Storage::disk('s3')->url($image);
         }
         $user->update($data);
-
+        
         Session::flash('success', 'Profile Updated Successfully...!!');
         return redirect(route('users.edit-profile'));
 

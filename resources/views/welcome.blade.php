@@ -198,12 +198,12 @@
         <div class="row">
           @foreach ($posts as $post)
           <div class="post col-md-4">
-            <div class="post-thumbnail"><a href="post.html"><img src="{{ $post->image }}" alt="..." class="img-fluid"></a></div>
+            <div class="post-thumbnail"><a href="{{ route('blog.show',$post->id) }}"><img src="{{ $post->image }}" alt="..." class="img-fluid"></a></div>
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ $post->published_at }}</div>
                 <div class="category"><a href="#">{{ $post->category->name }}</a></div>
-              </div><a href="post.html">
+              </div><a href="{{ route('blog.show', $post->id) }}">
                 <h3 class="h4">{{ $post->title }}</h3></a>
               <p class="text-muted">{{ $post->description }}</p>
             </div>

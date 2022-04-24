@@ -133,12 +133,16 @@
                 </div>
                 <h1>{{ $post->title }}<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
+                    @if(!isset($post->user->image))
+                    <div class="avatar"><img src="{{ asset('img/avatar.webp') }}" alt="..." class="img-fluid"></div>
+                    @else
                     <div class="avatar"><img src="{{ $post->user->image }}" alt="..." class="img-fluid"></div>
+                    @endif
                     <div class="title"><span>{{ $post->user->name }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">
                     <div class="date"><i class="icon-clock"></i>{{ $post->published_at }}</div>
                     {{-- <div class="views"><i class="icon-eye"></i> 500</div> --}}
-                    <div class="comments meta-last"><a href="{{ route('posts.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
+                    <div class="comments meta-last"><a href="{{ route('blog.show', $post->id) }}#disqus_thread"><i class="icon-comment"></i></a></div>
 
                   </div>
                 </div>
